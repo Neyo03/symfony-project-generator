@@ -1,0 +1,37 @@
+framework:
+    workflows:
+        project_creation:
+            type: 'state_machine'
+            supports:
+                - App\Entity\Project
+            places:
+                - choose_name
+                - choose_php_version
+                - choose_symfony_version
+                - choose_database
+                - choose_authentication
+                - choose_dependencies
+                - choose_js_integration
+                - choose_destination_folder
+            transitions:
+                choose_name_to_php_version:
+                    from: choose_name
+                    to: choose_php_version
+                choose_php_version_to_symfony_version:
+                    from: choose_php_version
+                    to: choose_symfony_version
+                choose_symfony_version_to_database:
+                    from: choose_symfony_version
+                    to: choose_database
+                choose_database_to_authentication:
+                    from: choose_database
+                    to: choose_authentication
+                choose_authentication_to_dependencies:
+                    from: choose_authentication
+                    to: choose_dependencies
+                choose_dependencies_to_js_integration:
+                    from: choose_dependencies
+                    to: choose_js_integration
+                choose_js_integration_to_destination_folder:
+                    from: choose_js_integration
+                    to: choose_destination_folder
