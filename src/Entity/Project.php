@@ -6,6 +6,8 @@ use App\Enum\SymfonyDependencyEnum;
 
 class Project
 {
+    public const PROJET_FILE_PATH = __DIR__ . '/../../config/projects/';
+
     private ?int $id = null;
 
     private ?string $name = null;
@@ -45,7 +47,7 @@ class Project
         return $this->name;
     }
 
-    public function setName(string $name): self
+    public function setName(?string $name = null): self
     {
         $this->name = $name;
         return $this;
@@ -56,7 +58,7 @@ class Project
         return $this->phpVersion;
     }
 
-    public function setPhpVersion(string $phpVersion): self
+    public function setPhpVersion(?string $phpVersion = null): self
     {
         $this->phpVersion = $phpVersion;
         return $this;
@@ -67,7 +69,7 @@ class Project
         return $this->symfonyVersion;
     }
 
-    public function setSymfonyVersion(string $symfonyVersion): self
+    public function setSymfonyVersion(?string $symfonyVersion = null): self
     {
         $this->symfonyVersion = $symfonyVersion;
         return $this;
@@ -78,7 +80,7 @@ class Project
         return $this->database;
     }
 
-    public function setDatabase(string $database): self
+    public function setDatabase(?string $database = null): self
     {
         $this->database = $database;
         return $this;
@@ -89,7 +91,7 @@ class Project
         return $this->authentication;
     }
 
-    public function setAuthentication(string $authentication): self
+    public function setAuthentication(?string $authentication = null): self
     {
         $this->authentication = $authentication;
         return $this;
@@ -116,7 +118,7 @@ class Project
         return $this->jsIntegration;
     }
 
-    public function setJsIntegration(string $jsIntegration): self
+    public function setJsIntegration(?string $jsIntegration = null): self
     {
         $this->jsIntegration = $jsIntegration;
         return $this;
@@ -127,7 +129,7 @@ class Project
         return $this->destinationFolder;
     }
 
-    public function setDestinationFolder(string $destinationFolder): self
+    public function setDestinationFolder(?string $destinationFolder = null): self
     {
         $this->destinationFolder = $destinationFolder;
         return $this;
@@ -138,7 +140,7 @@ class Project
         return $this->currentStep;
     }
 
-    public function setCurrentStep(string $currentStep): self
+    public function setCurrentStep(?string $currentStep = null): self
     {
         $this->currentStep = $currentStep;
         return $this;
