@@ -1,0 +1,116 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	<div class='d-flex p-5'>
+		<div class="p-5 mt-4 w-50">
+			<div>
+				<h2 class="text-primary">
+					{{stepTitle}}
+				</h2>
+				<p class="text-muted">
+					{{stepDescription}}
+				</p>
+			</div>
+			<div class="container d-flex justify-content-start align-items-start mb-5 mt-5">
+				<div class="progresses" data-controller="progress" data-progress-current-step-value="{{ currentStep }}" data-progress-total-steps-value="4">
+					<div class="steps" data-progress-target="step" data-step="1">
+						<span class="font-weight-bold">1</span>
+					</div>
+					<span class="line" data-progress-target="line"></span>
+
+					<!-- Step 2 -->
+					<div class="steps" data-progress-target="step" data-step="2">
+						<span class="font-weight-bold">2</span>
+					</div>
+					<span class="line" data-progress-target="line"></span>
+
+					<!-- Step 3 -->
+					<div class="steps" data-progress-target="step" data-step="3">
+						<span class="font-weight-bold">3</span>
+					</div>
+					<span class="line" data-progress-target="line"></span>
+
+					<!-- Step 4 -->
+					<div class="steps" data-progress-target="step" data-step="4">
+						<span class="font-weight-bold">4</span>
+					</div>
+					{# <span class="lineNotAccessible"></span>
+																																																																																																																																																																										
+																																																																																																																																																											<div class="stepsNotAccessible">
+																																																																																																																																																												<span class="font-weight-bold">6</span>
+																																																																																																																																																											</div>
+																																																																																																																																																						
+																																																																																																																																																											<span class="lineNotAccessible"></span>
+																																																																																																																																																						
+																																																																																																																																																											<div class="stepsNotAccessible">
+																																																																																																																																																												<span class="font-weight-bold">7</span>
+																																																																																																																																																											</div>
+																																																																																																																																																						
+																																																																																																																																																											<span class="lineNotAccessible"></span>
+																																																																																																																																																						
+																																																																																																																																																											<div class="stepsNotAccessible">
+																																																																																																																																																												<span class="font-weight-bold">8</span>
+																																																																																																																																																											</div> 
+																																																																																																																																																											#}
+				</div>
+			</div>
+
+			<div class="step-content">
+				<div
+					class='form-container'>
+					{# _form_step.html.twig #}
+					{{ form_start(form, {
+							'attr': {
+								'data-controller': 'project',
+								'data-step': project.currentStep,
+							}
+						}) }}
+
+					{% if not form.vars.valid %}
+						<div class="alert alert-danger">
+							{{ form_errors(form) }}
+						</div>
+					{% endif %}
+
+					{% for field in form %}
+						{% if field.vars.name != '_token' %}
+							<div class="form-group mb-3">
+								{{ form_label(field, null, {
+								'label_attr': {'class': 'form-label'}
+							}) }}
+
+								{{ form_widget(field, {
+								'attr': {
+									'class': 'form-control',
+									'data-project-target': 'input',
+									'data-action': 'input->project#checkInputs'
+								}
+							}) }}
+								{% if field.vars.errors|default([])|length > 0 %}
+									<div class="text-danger small mt-1">
+										{{ form_errors(field) }}
+									</div>
+								{% endif %}
+							</div>
+
+						{% endif %}
+					{% endfor %}
+
+					<div class='d-flex justify-content-between'>
+						<button type="submit" class="btn btn-primary mt-3" data-project-target="previousButton" disabled>
+							<i class="bi bi-arrow-left right-icon"></i>
+							previous
+						</button>
+						<button type="submit" class="btn btn-primary mt-3" data-project-target="nextButton" disabled>
+							Next
+							<i class="bi bi-arrow-right right-icon"></i>
+						</button>
+					</div>
+					{{ form_end(form) }}
+				</div>
+			</div>
+		</div>
+
+		{{ include('/components/project/preview.html.twig', {project : project}) }}
+	</div>
+{% endblock %}
