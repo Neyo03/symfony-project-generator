@@ -11,9 +11,10 @@ class ProjectConfigService
 
     public function generateYaml(Project $project): void
     {
-        $filePath = $this->projectDir . '/config/projects/' . $project->getName() . '.yaml';
+        $filePath = Project::PROJET_FILE_PATH . $project->getName() . '.yaml';
 
         $data = [
+            'id' => $project->getId(),
             'name' => $project->getName(),
             'phpVersion' => $project->getPhpVersion(),
             'symfonyVersion' => $project->getSymfonyVersion(),
@@ -30,7 +31,7 @@ class ProjectConfigService
 
     public function updateYaml(Project $project): void
     {
-        $filePath = $this->projectDir . '/config/projects' . $project->getName() . '.yaml';
+        $filePath = Project::PROJET_FILE_PATH . $project->getName() . '.yaml';
 
         $data = Yaml::parseFile($filePath);
 
