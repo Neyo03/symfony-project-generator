@@ -4,6 +4,9 @@ framework:
             type: 'state_machine'
             supports:
                 - App\Entity\Project
+            marking_store:
+                type: 'method'
+                property: 'currentStep'
             places:
                 - choose_name
                 - choose_php_version
@@ -23,15 +26,21 @@ framework:
                 choose_symfony_version_to_database:
                     from: choose_symfony_version
                     to: choose_database
-                choose_database_to_authentication:
+                # choose_database_to_authentication:
+                #     from: choose_database
+                #     to: choose_authentication
+                # choose_authentication_to_dependencies:
+                #     from: choose_authentication
+                #     to: choose_dependencies
+                # choose_dependencies_to_js_integration:
+                #     from: choose_dependencies
+                #     to: choose_js_integration
+                # choose_js_integration_to_destination_folder:
+                #     from: choose_js_integration
+                #     to: choose_destination_folder
+                choose_database_to_destination_folder:
                     from: choose_database
-                    to: choose_authentication
-                choose_authentication_to_dependencies:
-                    from: choose_authentication
-                    to: choose_dependencies
-                choose_dependencies_to_js_integration:
-                    from: choose_dependencies
-                    to: choose_js_integration
-                choose_js_integration_to_destination_folder:
-                    from: choose_js_integration
                     to: choose_destination_folder
+                choose_destination_folder_to_end:
+                    from: choose_destination_folder
+                    to: end
