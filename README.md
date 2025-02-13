@@ -2,6 +2,9 @@
 
 Symfony Project Generator est un outil graphique permettant de créer et configurer rapidement un projet Symfony personnalisé. Grâce à une interface intuitive, il vous permet de définir les paramètres essentiels dès le départ, vous faisant gagner un temps précieux dans vos développements.
 
+![image](https://github.com/user-attachments/assets/498614b2-3a42-4012-8fe4-b16507f3b991)
+
+
 ## 🚀 Fonctionnalités
 - **Création rapide de projets Symfony** monolithiques.
 - **Choix de la version PHP et Symfony** (dernière version compatible).
